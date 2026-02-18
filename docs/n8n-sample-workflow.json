@@ -1,0 +1,44 @@
+{
+  "name": "Send to Next.js Webhook",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "webhook-test",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "url": "https://<YOUR_NGROK_OR_DOMAIN>/api/n8n-webhook",
+        "options": {},
+        "requestMethod": "POST",
+        "jsonParameters": true,
+        "bodyParametersJson": "={ \"message\": $json[\"body\"] }",
+        "headerParametersJson": "={ \"x-n8n-secret\": \"your-secret\" }"
+      },
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [550, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

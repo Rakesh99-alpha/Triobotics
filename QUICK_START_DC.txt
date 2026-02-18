@@ -1,0 +1,83 @@
+# ⚡ QUICK START: Create & Print DC
+
+## 🚀 OPEN THIS URL:
+```
+http://localhost:3000/purchase/documents/dc
+```
+
+---
+
+## 1️⃣ CLICK "Create New DC" (Green Button)
+
+---
+
+## 2️⃣ FILL REQUIRED FIELDS:
+
+### Customer Info:
+```
+Name:     [Type customer name]
+Address:  [Type full address]
+GSTIN:    [33AAAA1234A1Z5]
+State:    [33]
+Phone:    [+91 9876543210]
+```
+
+### Add Items:
+```
+Code: [FRP-001]  Description: [FRP Panel]
+HSN: [39269099]  Qty: [25]  Unit: [Pcs ▼]
+
+>>> CLICK "+ Add Item" <<<  (IMPORTANT!)
+```
+
+---
+
+## 3️⃣ CLICK "Create DC" (Bottom of Form)
+
+---
+
+## 4️⃣ CLICK 👁️ EYE ICON (in the list)
+
+---
+
+## 5️⃣ CLICK "Print" BUTTON
+
+---
+
+## ⚠️ IMPORTANT:
+- After filling item details, **CLICK "+ Add Item"**
+- Don't leave any customer field empty
+- At least 1 item must be added
+
+---
+
+## ✅ TEST WITH THESE VALUES:
+
+```
+CUSTOMER:
+Name: ABC Manufacturing
+Address: Plot 23, Industrial Park, Chennai
+GSTIN: 33TEST123456789
+State: 33
+Phone: +91 9876543210
+
+ITEM:
+Code: TEST-001
+Description: Test Product
+HSN: 12345678
+Qty: 10
+Unit: Pcs
+>>> Click "+ Add Item" <<<
+```
+
+---
+
+## 🎯 SHORTCUTS:
+
+**Create DC:** http://localhost:3000/purchase/documents/dc
+**Documents:** http://localhost:3000/purchase/documents
+**Purchase:** http://localhost:3000/purchase
+
+---
+
+**DONE! Print your DC! 🎉**

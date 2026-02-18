@@ -1,0 +1,235 @@
+/* Theme Toggle CSS - Sun/Moon Animation */
+:root {
+  --toggle-slide-ease: cubic-bezier(.4,-0.3,.6,1.3);
+  --toggle-easing: var(--toggle-slide-ease);
+  --toggle-speed: 0.5s;
+  --toggle-ray: hsl(0 0% 100% / 0.5);
+  --toggle-sun: hsl(47, 91%, 58%);
+  --toggle-moon: hsl(212, 13%, 82%);
+  --toggle-crater: hsl(221, 16%, 68%);
+}
+
+.theme-toggle {
+  -webkit-tap-highlight-color: transparent;
+  aspect-ratio: 8 / 3;
+  border-radius: 100vh;
+  border: 0;
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+  transition: background var(--toggle-speed) var(--toggle-easing);
+  outline-color: transparent;
+  background: hsl(
+    calc(204 + (var(--dark, 0) * 25))
+    calc((53 - (var(--dark, 0) * 28)) * 1%)
+    calc((47 - (var(--dark, 0) * 31)) * 1%)
+  );
+  box-shadow:
+    0 0.02em 0.01em -0.0025em hsl(210 10% 100% / 0.95),
+    0 -0.02em 0.01em -0.0025em hsl(210 10% 10% / 0.2),
+    0 0.02em 0.5em 0 hsl(210 10% 100% / 0.15);
+}
+
+.theme-toggle:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow:
+    0 -0.025em 0.025em 0 hsl(210 10% 10% / 0.15) inset,
+    0 0.025em 0.025em 0 hsl(210 10% 10% / 0.65) inset;
+  border-radius: 100vh;
+  pointer-events: none;
+}
+
+.theme-toggle .toggle__content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  border-radius: 100vh;
+  display: block;
+  clip-path: inset(0 0 0 0 round 100vh);
+  container-type: inline-size;
+}
+
+.theme-toggle .toggle__backdrop {
+  overflow: visible !important;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  transition: translate var(--toggle-speed) var(--toggle-easing);
+  translate: 0 calc(var(--dark, 0) * 70%);
+}
+
+.theme-toggle .toggle__backdrop:first-of-type .clouds path {
+  fill: var(--toggle-ray);
+}
+
+.theme-toggle[aria-pressed=false] .toggle__backdrop:last-of-type {
+  transition-timing-function: cubic-bezier(.2,-0.6,.7,1.6);
+}
+
+.theme-toggle[aria-pressed=false] .stars path {
+  transition-delay: 0s;
+}
+
+.theme-toggle .stars path {
+  transform-box: fill-box;
+  transform-origin: 25% 50%;
+  scale: calc(0.25 + (var(--dark, 0) * 0.75));
+  transition: scale var(--toggle-speed) calc(var(--toggle-speed) * 0.5) var(--toggle-easing);
+}
+
+.theme-toggle .toggle__indicator {
+  height: 100%;
+  aspect-ratio: 1;
+  border-radius: 0%;
+  display: grid;
+  place-items: center;
+  padding: 3%;
+  transition: translate var(--toggle-speed) var(--toggle-slide-ease);
+  translate: calc(var(--dark, 0) * (100cqi - 100%)) 0;
+}
+
+.theme-toggle .toggle__star {
+  height: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  position: relative;
+  transition: translate var(--toggle-speed) var(--toggle-easing);
+  translate: calc((var(--dark, 0) * -10%) + 5%) 0;
+}
+
+.theme-toggle .sun {
+  background: var(--toggle-sun);
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow:
+    0.01em 0.01em 0.02em 0 hsl(210 10% 100% / 0.95) inset,
+    -0.01em -0.01em 0.02em 0 hsl(210 10% 20% / 0.5) inset;
+}
+
+.theme-toggle .moon {
+  position: absolute;
+  inset: -1%;
+  border-radius: 50%;
+  background: var(--toggle-moon);
+  transition: translate var(--toggle-speed) ease-in-out;
+  translate: calc((100 - (var(--dark, 0) * 100)) * 1%) 0%;
+  box-shadow:
+    0.01em 0.01em 0.02em 0 hsl(210 10% 100% / 0.95) inset,
+    -0.01em -0.01em 0.02em 0 hsl(210 10% 10% / 0.95) inset;
+}
+
+.theme-toggle .moon__crater {
+  position: absolute;
+  background: var(--toggle-crater);
+  border-radius: 50%;
+  width: calc(var(--size, 10) * 1%);
+  aspect-ratio: 1;
+  left: calc(var(--x) * 1%);
+  top: calc(var(--y) * 1%);
+  box-shadow:
+    0.01em 0.01em 0.01em 0 hsl(210 10% 6% / 0.25) inset,
+    0 0.005em 0.01em 0 hsl(210 10% 100% / 0.25);
+}
+
+.theme-toggle .moon__crater:nth-of-type(1) {
+  --size: 18;
+  --x: 40;
+  --y: 15;
+}
+
+.theme-toggle .moon__crater:nth-of-type(2) {
+  --size: 20;
+  --x: 65;
+  --y: 58;
+}
+
+.theme-toggle .moon__crater:nth-of-type(3) {
+  --size: 34;
+  --x: 18;
+  --y: 40;
+}
+
+.theme-toggle .toggle__star:before {
+  content: "";
+  z-index: -1;
+  width: 356%;
+  background:
+    radial-gradient(hsl(0 0% 100% / 0.25) 40%, transparent 40.5%),
+    radial-gradient(hsl(0 0% 100% / 0.25) 56%, transparent 56.5%)
+    hsl(0 0% 100% / 0.25);
+  border-radius: 50%;
+  aspect-ratio: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transition: translate var(--toggle-speed) var(--toggle-easing);
+  translate: calc((50 - (var(--dark, 0) * 4)) * -1%) -50%;
+}
+
+.theme-toggle .toggle__star:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  display: block;
+  background: hsl(0 0% 0% / 0.5);
+  filter: blur(4px);
+  translate: 2% 4%;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.theme-toggle[aria-pressed=true] {
+  --dark: 1;
+}
+
+/* Star Twinkle Animation */
+.theme-toggle .stars g {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+
+.theme-toggle .stars g:nth-of-type(3) {
+  animation: toggle-twinkle 4s -2s infinite;
+}
+
+.theme-toggle .stars g:nth-of-type(11) {
+  animation: toggle-twinkle 6s -2s infinite;
+}
+
+.theme-toggle .stars g:nth-of-type(9) {
+  animation: toggle-twinkle 4s -1s infinite;
+}
+
+@keyframes toggle-twinkle {
+  0%, 40%, 60%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0);
+  }
+}
+
+/* Size variants */
+.theme-toggle.w-\[80px\] {
+  width: 80px;
+  font-size: 80px;
+}
+
+.theme-toggle.w-\[120px\] {
+  width: 120px;
+  font-size: 120px;
+}
+
+.theme-toggle.w-\[160px\] {
+  width: 160px;
+  font-size: 160px;
+}
