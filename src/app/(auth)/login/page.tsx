@@ -36,15 +36,6 @@ const FALLBACK_USERS: Record<string, { password: string; role: string; name: str
   narendra: { password: 'Trio@2015', role: 'employee', name: 'M Narendra Prasad' },
   surya: { password: 'Trio@2015', role: 'employee', name: 'S Surya Prakash' },
   rakesh: { password: 'Trio@2015', role: 'employee', name: 'J Rakesh' },
-  ramesh: { password: 'Trio@2015', role: 'employee', name: 'K Ramesh' },
-  venkat: { password: 'Trio@2015', role: 'employee', name: 'V Venkatesh' },
-  srinivas: { password: 'Trio@2015', role: 'employee', name: 'P Srinivas' },
-  kumar: { password: 'Trio@2015', role: 'employee', name: 'A Kumar' },
-  ravi: { password: 'Trio@2015', role: 'employee', name: 'R Ravi Kumar' },
-  suresh: { password: 'Trio@2015', role: 'employee', name: 'B Suresh' },
-  mahesh: { password: 'Trio@2015', role: 'employee', name: 'G Mahesh' },
-  rajesh: { password: 'Trio@2015', role: 'employee', name: 'D Rajesh' },
-  prasad: { password: 'Trio@2015', role: 'employee', name: 'T Prasad' },
 };
 
 // Dynamic role-based dashboard routing map
@@ -360,7 +351,7 @@ export default function LoginPage() {
                 transition={{ delay: 0.2, duration: 0.5 }}
               >
                 <h1 className="text-3xl sm:text-4xl font-light text-white mb-2 tracking-tight">
-                  TRIOBOTICS Login
+                  TRIOBOTICS 
                 </h1>
                 <p className="text-zinc-400 text-sm font-light">
                   Sign in to R&D
